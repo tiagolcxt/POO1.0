@@ -45,8 +45,13 @@ public class PessoaFisica extends Cliente{
     }*/
  
     public String toFileString() {
-        return "PF," + getIdCliente() + "," + getNome() + "," + getEmail() + "," + getEndereco() + "," + getTelefone() +
-        ","  + getUserName() + "," + getPassword() + "," + getCpf() + "," + getRg() + "," + data.getDia() + '/' + data.getMes() + '/' + data.getAno();
+        return "PF" + ","+ getIdCliente() + "," + getNome() + "," + getEmail() + "," + getEndereco() + "," + getTelefone() +
+        ","  + getUserName() + "," + getPassword() + "," + getCpf() + "," + getRg() + "," + this.data.getDia() + ","+this.data.getMes() + "," + this.data.getAno();
+    }
+
+    @Override
+    protected String getTipo() {
+        return "PF";
     }
 
     @Override

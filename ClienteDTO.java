@@ -27,36 +27,48 @@ public class ClienteDTO {
         return Files.lines(caminhoArquivoAbsoluto)
                 .map(line -> {
                     String[] dadosCliente = line.split(",");
+                    
+                    if (dadosCliente.length < 11) {
+                        // Se a linha não contém o número esperado de campos, retorne null
+                        return null;
+                    }
+
                     String tipo = dadosCliente[0];
                     if ("PJ".equals(tipo)) {
                         return new PessoaJuridica(
-                                Integer.parseInt(dadosCliente[1]),  //idCliente
-                                dadosCliente[2],                    //nome
-                                dadosCliente[3],                    //email
-                                dadosCliente[4],                    //endereco
-                                dadosCliente[5],                    //telefone
-                                dadosCliente[6],                    //username
-                                dadosCliente[7],                    //password
-                                dadosCliente[8],                    //cnpj
-                                dadosCliente[9],                    //razao
-                                dadosCliente[10]                    //inscri
+                                Integer.parseInt(dadosCliente[1]),  // idCliente
+                                dadosCliente[2],                    // nome
+                                dadosCliente[3],                    // email
+                                dadosCliente[4],                    // endereco
+                                dadosCliente[5],                    // telefone
+                                dadosCliente[6],                    // username
+                                dadosCliente[7],                    // password
+                                dadosCliente[8],                    // cnpj
+                                dadosCliente[9],                    // razao
+                                dadosCliente[10]                    // outro dado para PJ
                         );
                     } else if ("PF".equals(tipo)) {
-                        String[] dadosData = dadosCliente[11].split(",");
-                        return new PessoaFisica(
-                            Integer.parseInt(dadosCliente[1]),
-                            dadosCliente[2],
-                            dadosCliente[3],
-                            dadosCliente[4],
-                            dadosCliente[5],
-                            dadosCliente[6],
-                            dadosCliente[7],
-                            dadosCliente[8],
-                            dadosCliente[9], 
-                            Integer.parseInt(dadosData[0]),
-                            Integer.parseInt(dadosData[1]),
-                            Integer.parseInt(dadosData[2])
-                        );
+                        // Certifique-se de que há pelo menos 12 campos para PF
+                        if (dadosCliente.length >= 12) {
+                            //String[] dadosData = dadosCliente[11].split(",");
+                            return new PessoaFisica(
+                                Integer.parseInt(dadosCliente[1]),  // idCliente
+                                dadosCliente[2],                    // nome
+                                dadosCliente[3],                    // email
+                                dadosCliente[4],                    // endereco
+                                dadosCliente[5],                    // telefone
+                                dadosCliente[6],                    // username
+                                dadosCliente[7],                    // password
+                                dadosCliente[8],                    // cpf
+                                dadosCliente[9],                 // rg
+                                Integer.parseInt(dadosCliente[10]),
+                                Integer.parseInt(dadosCliente[11]),
+                                Integer.parseInt(dadosCliente[12])     // dia     // ano
+                            );
+                        }
+                        else{
+                            System.out.println("nao ha 12 parametros");
+                        }
                     }
                     return null; // Retornar null para linhas inválidas
                 })
