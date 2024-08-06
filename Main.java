@@ -5,6 +5,22 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+        //SALVAR PJ
+        // PessoaJuridica h = new  PessoaJuridica(1, "Hawryson", "teste@gmail.com", "rua irma celina",
+        //  "6269696969", "hawry", "senha", "090109", "nao sei oque e", "tambem nao sei");
+
+          //SALVAR CLIENTE PF
+        // PessoaFisica v = new PessoaFisica(0030,"Cardosinho","email@cardosinhogameplays.com","Ruah","629999999","messi"
+        // ,"margarida","00011122233","1234", 23, 8, 2004);
+
+        // try{
+        //     h.salvarCliente("clientes.txt");
+        //     v.salvarCliente("clientes.txt");
+        // }
+        // catch(IOException e){
+        //     System.out.println("erro ao salvar cliente");
+        // }
+
         try {
             // Ler clientes do arquivo usando o DTO
             List<Cliente> clientes = ClienteDTO.lerClientesDoArquivo();
@@ -15,8 +31,8 @@ public class Main {
             }
 
             // Tentar fazer login com o usuário fornecido
-            String emailParaLogin = "email@exemplo.com";
-            String senhaParaLogin = "senhaForte";
+            String emailParaLogin = "teste@gmail.com";
+            String senhaParaLogin = "senha";
 
             boolean sucessoLogin = Cliente.login(emailParaLogin, senhaParaLogin);
 
@@ -30,27 +46,10 @@ public class Main {
             System.err.println("Erro ao ler o arquivo de clientes: " + e.getMessage());
         }
 
-        //SALVAR CLIENTE PF
-        // PessoaFisica h = new PessoaFisica(0030,"LionelMessi","email@messithebest.com","Ruah","629999999","messi"
-        // ,"senhaForte123","00011122233","1234", 23, 8, 2004);
-        PessoaFisica v = new PessoaFisica(0030,"Cardosinho","email@cardosinhogameplays.com","Ruah","629999999","messi"
-        ,"margarida","00011122233","1234", 23, 8, 2004);
-
-        try{
-            v.salvarCliente("clientes.txt");
-        }
-        catch(IOException e){
-            System.out.println("erro ao salvar cliente");
-        }
-
         try {
             // Ler clientes do arquivo usando o DTO
             List<Cliente> clientesPf = ClienteDTO.lerClientesDoArquivo();
 
-            // Exibir lista de clientes carregados (opcional)
-            for (Cliente cliente : clientesPf) {
-                System.out.println(cliente.toFileString());
-            }
 
             String emailParaLoginpf = "email@cardosinhogameplays.com";
             String senhaParaLoginpf = "margarida";
