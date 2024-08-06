@@ -1,2 +1,2 @@
-PJ,1,Hawryson,teste@gmail.com,rua irma celina,6269696969,hawry,senha,090109,nao sei oque e,tambem nao sei
-PF,24,Cardosinho,email@cardosinhogameplays.com,Ruah,629999999,messi,margarida,00011122233,1234,23,8,2004
+PJ,1,Hawryson,teste@gmail.com,rua irma celina,6269696969,hawry,senha,82.233.587/0001-43,nao sei oque e,tambem nao sei
+PF,24,Cardosinho,email@cardosinhogameplays.com,Ruah,629999999,messi,margarida,081.928,031-39,1234,23,8,2004

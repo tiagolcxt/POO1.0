@@ -37,6 +37,31 @@ public class PessoaJuridica extends Cliente {
     public void setInscricaoEstadual(String inscricaoEstadual) {
         this.inscricaoEstadual = inscricaoEstadual;
     }
+    
+    public static boolean ValidaCNPJ(String cnpj){
+        //remover caractéres não numéricos
+        cnpj = cnpj.replaceAll("\\D", "");
+
+        if(cnpj.length() != 14){
+            return false;
+        }
+        if (cnpj.matches("(\\d)\\1{13}")) {
+            return false;
+        }
+        int[] pesos = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
+        for (int i = 0; i < 2; i++) {
+            int sum = 0;
+            for (int j = 0; j < 12 + i; j++) {
+                sum += (cnpj.charAt(j) - '0') * pesos[j + 1 - i];
+            }
+            int digit = (sum % 11 < 2) ? 0 : 11 - (sum % 11);
+            if (digit != (cnpj.charAt(12 + i) - '0')) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     @Override
     protected String getTipo() {

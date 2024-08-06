@@ -6,7 +6,6 @@ public class PessoaFisica extends Cliente{
 
     //construtor
 
-
     public PessoaFisica(int IdCliente, String nome, String email, String endereco,
                         String telefone, String userName, String password, String cpf, String rg, int dia, int mes, int ano) {
         super(IdCliente, nome, email, endereco, telefone, userName, password);
@@ -40,9 +39,41 @@ public class PessoaFisica extends Cliente{
         this.data = data;
     }
 
-    //métodos
-    /*private boolean validarCNPJ(String cnpj){
-    }*/
+    public static boolean ValidaCPF(String Scpf) {
+
+        // Remove caracteres não numéricos
+        Scpf = Scpf.replaceAll("\\D", "");
+
+        // Verifica se o CPF tem exatamente 11 dígitos
+        if (Scpf.length() != 11) {
+            return false;
+        }
+
+        // Converte a string em um array de inteiros
+        int[] cpf = new int[11];
+        for (int i = 0; i < 11; i++) {
+            cpf[i] = Character.getNumericValue(Scpf.charAt(i));
+        }
+
+        // Valida o primeiro dígito verificador
+        int soma1 = 0;
+        for (int i = 0; i < 9; i++) {
+            soma1 += cpf[i] * (10 - i);
+        }
+        int resto1 = soma1 % 11;
+        int digito1 = (resto1 < 2) ? 0 : 11 - resto1;
+
+        // Valida o segundo dígito verificador
+        int soma2 = 0;
+        for (int i = 0; i < 10; i++) {
+            soma2 += cpf[i] * (11 - i);
+        }
+        int resto2 = soma2 % 11;
+        int digito2 = (resto2 < 2) ? 0 : 11 - resto2;
+
+        // Compara os digitos
+        return (digito1 == cpf[9]) && (digito2 == cpf[10]);
+    }
  
     public String toFileString() {
         return "PF" + ","+ getIdCliente() + "," + getNome() + "," + getEmail() + "," + getEndereco() + "," + getTelefone() +
