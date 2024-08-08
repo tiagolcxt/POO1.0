@@ -1,0 +1,1 @@
+Pedido 10, dataPedido=12/2/2024, status='pendente', idCliente=888, itens=[Item@2f2c9b19, Item@31befd9f]

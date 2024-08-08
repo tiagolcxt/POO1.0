@@ -1,4 +1,0 @@
-Pedido 123, dataPedido=15/8/2024, status='processando', idCliente=456, itens=[Item@125c082e, Item@584f5497]
-
-Pedido 123, dataPedido=15/8/2024, status='processando', idCliente=456, itens=[Item@2752f6e2, Item@e580929]
-
