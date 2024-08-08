@@ -45,4 +45,9 @@ public class PessoaJuridica extends Cliente {
         return "PJ" + "," + getIdCliente() + "," + getNome() + "," + getEmail() + "," + getEndereco() + "," + getTelefone() + "," +
                 getUserName() + "," + getPassword() + "," + getCnpj() + "," + getRazaoSocial() + "," + getInscricaoEstadual();
     }
+
+    @Override
+    protected String getTipo() {
+        return "";
+    }
 }

@@ -1,11 +1,10 @@
 package br.gov.ufg.entity;
 
-import br.gov.ufg.entity.Data;
-import br.gov.ufg.entity.Item;
 import br.gov.ufg.utils.FileUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Pedido {
@@ -28,7 +27,7 @@ public class Pedido {
         this.itens = new ArrayList<>(itens);
     }
 
-    public int getIdPedido() {
+    public int getIdPedido(int i) {
         return idPedido;
     }
 
@@ -72,9 +71,9 @@ public class Pedido {
         this.itens.add(item);
     }
 
-    public double calcularTotal() {
+    public double calcularTotal(List<Item> itens) {
         double total = 0;
-        for (Item item : itens) {
+        for (Item item : this.itens) {
             if (item != null) {
                 total += item.calcularSubtotal();
             }
@@ -113,7 +112,9 @@ public class Pedido {
     public String itensComprados() {
         return "Pedido{" +
                 "itens=" + itens +
-                ", Subtotal=" + calcularTotal() +
+                ", Subtotal=" + calcularTotal(itens) +
                 '}';
+    }
+    public void setDataPedido(Date date) {
     }
 }
