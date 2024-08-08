@@ -9,20 +9,21 @@ public class Pedido {
     private Data dataPedido;
     private String status;
     private int idCliente;
-    private Item[] itens;
+    private List<Item> itens;
 
     public Pedido(int idPedido, int dia, int mes, int ano, String status, int idCliente) {
         this.idPedido = idPedido;
-        this.dataPedido = new Data(dia,mes,ano);
+        this.dataPedido = new Data(dia, mes, ano);
         this.status = status;
         this.idCliente = idCliente;
+        this.itens = new ArrayList<>();
     }
 
-    public Pedido(Item[] itens) {
-        this.itens = itens;
+    public Pedido(List<Item> itens) {
+        this.itens = new ArrayList<>(itens);
     }
 
-    public int getIdPedido(int idPedido) {
+    public int getIdPedido() {
         return idPedido;
     }
 
@@ -54,15 +55,19 @@ public class Pedido {
         this.idCliente = idCliente;
     }
 
-    public Item[] getItens() {
+    public List<Item> getItens() {
         return itens;
     }
 
-    public void setItens(Item[] itens) {
+    public void setItens(List<Item> itens) {
         this.itens = itens;
     }
 
-    public double calcularTotal(Item[] itens) {
+    public void adicionarItem(Item item) {
+        this.itens.add(item);
+    }
+
+    public double calcularTotal() {
         double total = 0;
         for (Item item : itens) {
             if (item != null) {
@@ -78,27 +83,24 @@ public class Pedido {
         FileUtils.atualizarArquivo(caminhoArquivo, linhas);
     }
 
-    /*public String atualizarStatus(String status){
-        if(status == "efetuado"){
-
-        }
-        
-    }*/
+    public String toFileString() {
+        return getIdPedido() + "," + getStatus() + "," + getIdCliente() +
+                "," + this.dataPedido.getDia() + "," + this.dataPedido.getMes() + "," + this.dataPedido.getAno();
+    }
 
     @Override
     public String toString() {
-        return "Pedido "+  + idPedido +
-                ", dataPedido=" + dataPedido.toString() +
-                ", status='" + status + '\'' +
-                ", idCliente=" + idCliente +
-                ", itens=" + Arrays.toString(itens) + "\n";
-
+        return "Pedido" + idPedido +
+                ", dataPedido" + dataPedido.toString() +
+                ", status" + status + '\'' +
+                ", idCliente" + idCliente +
+                ", itens" + itens.toString() + "\n";
     }
 
     public String itensComprados() {
         return "Pedido{" +
-                "itens=" + Arrays.toString(itens) +
-                "Subtotal=" + calcularTotal(itens) +
+                "itens=" + itens.toString() +
+                "Subtotal=" + calcularTotal() +
                 '}';
     }
 }

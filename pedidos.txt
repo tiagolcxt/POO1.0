@@ -1,4 +1,6 @@
-Pedido 123, dataPedido=15/8/2024, status='processando', idCliente=456, itens=[Item@125c082e, Item@584f5497]
+Pedido 10, dataPedido=12/2/2024, status='pendente', idCliente=888, itens=[Item@2f2c9b19, Item@31befd9f]
 
-Pedido 123, dataPedido=15/8/2024, status='processando', idCliente=456, itens=[Item@2752f6e2, Item@e580929]
+Pedido10, dataPedido12/2/2024, statuspendente', idCliente888, itens[Item@2f2c9b19, Item@31befd9f]
+
+Pedido10, dataPedido12/2/2024, statuspendente', idCliente888, itens[Item@2f2c9b19, Item@31befd9f]
 

@@ -4,8 +4,36 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
+
+        //CRIAR PEDIDO
+
+        Pedido a = new Pedido(10, 12,2, 2024, "pendente", 888);
+        Item item1 = new Item(1, 2, 10.50f); // idProduto, quantidade, precoUnitario
+        Item item2 = new Item(2, 1, 25.00f);
+
+        a.adicionarItem(item1);
+        a.adicionarItem(item2);
+        try{
+            a.salvarPedido("pedidos.txt");
+            System.out.println("pedido salvo com sucesso");
+            
+        }catch(IOException b){
+            System.out.println("erro ao salvar pedido");
+        }
+
+        List<Pedido> pedidos;
+        try{
+            pedidos = PedidoDTO.lerPedidosDoArquivo();
+        // Exibir lista de pedidos
+        for (Pedido p : pedidos) {
+            System.out.println(p.toFileString());
+        }
+
+        }catch(IOException | URISyntaxException c){
+            System.err.println("Erro ao ler o arquivo de pedidos: " + c.getMessage());
+        }
+
         //SALVAR PJ
         Scanner s = new Scanner(System.in);
         String cnpjTest;
@@ -92,8 +120,8 @@ public class Main {
                 System.out.println("Falha no login. Verifique seu email e senha HH.");
             }
         }
-        catch(IOException | URISyntaxException a){
-            System.err.println("Erro ao ler o arquivo de clientes: " + a.getMessage());
+        catch(IOException | URISyntaxException e){
+            System.err.println("Erro ao ler o arquivo de clientes: " + e.getMessage());
         }
     }
 }
