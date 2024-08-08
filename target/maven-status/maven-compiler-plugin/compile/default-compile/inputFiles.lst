@@ -1,0 +1,15 @@
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\api\Main.java
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\entity\PessoaFisica.java
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\entity\Produto.java
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\dto\ClienteDTO.java
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\controller\ClienteController.java
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\entity\Data.java
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\entity\Item.java
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\dto\ProdutoDTO.java
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\utils\FileUtils.java
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\entity\PessoaJuridica.java
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\configuration\CorsConfiguration.java
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\controller\ProdutoController.java
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\api\ApiApplication.java
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\entity\Cliente.java
+C:\Users\TIAGO\Desktop\api\src\main\java\br\gov\ufg\utils\ImageToBase64.java
