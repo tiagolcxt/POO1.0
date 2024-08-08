@@ -1,46 +1,31 @@
 package br.gov.ufg.api;
 
-import br.gov.ufg.dto.ClienteDTO;
-import br.gov.ufg.entity.Cliente;
 import br.gov.ufg.entity.Produto;
+import br.gov.ufg.utils.FileUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
 
-import java.io.IOException;
+import java.io.*;
 import java.math.BigDecimal;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        // Carregar a lista de clientes existente
-        try {
-            // Carregar a lista de clientes existente usando o ClienteDTO
-            List<Cliente> clientes = ClienteDTO.lerClientesDoArquivo();
 
-            // Exibir informações dos clientes carregados
-            if (!clientes.isEmpty()) {
-                System.out.println("Clientes carregados:");
-                clientes.forEach(cliente -> {
-                    System.out.println(cliente.toString());
-                });
-            } else {
-                System.out.println("Nenhum cliente encontrado.");
-            }
-        } catch (IOException | URISyntaxException e) {
-            System.out.println("Erro ao ler o arquivo de clientes: " + e.getMessage());
-        }
-
-        // caminho relativo para o arquivo de produtos
+        // caminho relativo
         String fileName = "database/produtos.txt";
 
         // Tentar obter o caminho do arquivo como um recurso
         java.net.URL resource = Main.class.getClassLoader().getResource(fileName);
         if (resource != null) {
             try {
+
                 // Converter URL para URI e obter o caminho absoluto
                 java.nio.file.Path caminhoArquivoAbsoluto = Paths.get(resource.toURI());
                 // Imprimir o caminho absoluto
@@ -57,7 +42,8 @@ public class Main {
             System.out.println("Arquivo não encontrado!");
         }
 
-        // Caminho absoluto para o arquivo de imagem
+
+
         try {
             Path imagePath = Paths.get("C:\\projetos\\api\\src\\main\\resources\\imagens\\calca_jeans.png");
             byte[] imagemBytes = Files.readAllBytes(imagePath);
