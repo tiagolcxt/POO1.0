@@ -81,4 +81,6 @@ public class ClienteDTO {
                 .filter(cliente -> cliente != null) // Filtrar clientes nulos
                 .collect(Collectors.toList());
     }
+
+
 }

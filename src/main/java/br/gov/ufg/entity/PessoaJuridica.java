@@ -15,6 +15,9 @@ public class PessoaJuridica extends Cliente {
         this.inscricaoEstadual = inscricaoEstadual;
     }
 
+    public PessoaJuridica(Object nome, String email, String senha, String dataNascimento, String documento, String endereco, String inscricaoEstadual, String razaoSocial, String telefone) {
+    }
+
     // getters e setters
     public String getCnpj() {
         return cnpj;

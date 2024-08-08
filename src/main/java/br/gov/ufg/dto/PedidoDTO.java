@@ -1,27 +1,26 @@
 package br.gov.ufg.dto;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import br.gov.ufg.entity.Item;
 import br.gov.ufg.entity.Pedido;
 
 public class PedidoDTO {
 
-    private static final String CAMINHO_ARQUIVO = "database/pedidos.txt";
+    private static final String CAMINHO_ARQUIVO = "C:\\AplicaçoesH\\prog\\TfinalPOO\\POO1.0\\src\\main\\resources\\database\\pedidos.txt";
 
-    public static List<Pedido> lerPedidosDoArquivo() throws IOException, URISyntaxException {
-        java.net.URL resource = PedidoDTO.class.getClassLoader().getResource(CAMINHO_ARQUIVO);
+    public static List<Pedido> lerPedidosDoArquivo() throws IOException {
+        java.nio.file.Path caminhoArquivoAbsoluto = Paths.get(CAMINHO_ARQUIVO);
 
-        if (resource == null) {
+        if (!Files.exists(caminhoArquivoAbsoluto)) {
+            System.out.println("Arquivo não encontrado!");
             return new ArrayList<>();
         }
-
-        java.nio.file.Path caminhoArquivoAbsoluto = Paths.get(resource.toURI());
 
         return Files.lines(caminhoArquivoAbsoluto)
                 .map(line -> {
