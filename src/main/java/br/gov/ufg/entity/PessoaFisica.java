@@ -20,6 +20,9 @@ public class PessoaFisica extends Cliente{
         this.data = new Data(dia, mes, ano);
     }
 
+    public PessoaFisica(Object nome, String email, String senha, String dataNascimento, String documento, String endereco, String rg, String telefone) {
+    }
+
 
     public void setCpf(String cpf) {
         this.cpf = cpf;

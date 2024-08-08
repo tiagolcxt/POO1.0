@@ -1,5 +1,11 @@
 package br.gov.ufg.entity;
 
+import br.gov.ufg.dto.ClienteDTO;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.List;
+
 public abstract class Cliente {
     // atributos
     private int idCliente;
@@ -160,7 +166,24 @@ public abstract class Cliente {
     public void setPassword(String senha) {
         this.senha = senha;
     }
-    
+
+    // Método de login
+    public static boolean login(String email, String password) {
+        try {
+            ClienteDTO ClienteDTO = null;
+            List<Cliente> clientes = ClienteDTO.lerClientesDoArquivo();
+            for (Cliente cliente : clientes) {
+                System.out.println(cliente.getEmail());
+                System.out.println(cliente.getPassword());
+                if (cliente.getEmail().equals(email) && cliente.getPassword().equals(password)) {
+                    return true;
+                }
+            }
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     public abstract String toFileString();
 

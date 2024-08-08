@@ -16,30 +16,30 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RequestMapping("/clientes")
 public class ClienteController {
 
-    private static final String CAMINHO_ARQUIVO = "database/clientes.txt";
+    private static final String CAMINHO_ARQUIVO = "C:/Users/TIAGO/Desktop/POO1.0/src/main/resources/database/clientes.txt";
 
     @CrossOrigin
     @PostMapping("/registrar")
-    public ResponseEntity<String> registrarCliente(@RequestBody Cliente cliente) {
-        return ResponseEntity.badRequest().body("Email já cadastrado.");
+    public ResponseEntity<String> registrarCliente(@RequestBody ClienteRegister request) {
+        try {
+            // Obter a string no formato apropriado para o cliente
+            String clienteString = request.toFileString();
 
-       /* try {
-            // Verificar se o cliente já existe no arquivo
-            List<Cliente> clientes = ClienteDTO.lerClientesDoArquivo();
-            for (Cliente c : clientes) {
-                if (c.getEmail().equals(cliente.getEmail())) {
-                    return ResponseEntity.badRequest().body("Email já cadastrado.");
-                }
-            }
-            // Salvar cliente
-            ClientService cs = new ClientService();
-            cs.salvarCliente(cliente);
+            // Log para depuração
+            System.out.println("Registrando cliente: " + clienteString);
+
+            // Salvar no arquivo
+            FileUtils.atualizarArquivo(CAMINHO_ARQUIVO, List.of(clienteString));
             return ResponseEntity.ok("Cliente registrado com sucesso.");
-        } catch (IOException | URISyntaxException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-            return ResponseEntity.status(500).body("Erro ao registrar cliente.");
-        }*/
+            return ResponseEntity.status(500).body("Erro ao registrar cliente: " + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("Erro inesperado ao registrar cliente: " + e.getMessage());
+        }
     }
+
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest login) {
@@ -54,17 +54,6 @@ public class ClienteController {
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
             return ResponseEntity.status(500).body("Erro ao verificar login.");
-        }
-    }
-
-    @GetMapping("/listar")
-    public ResponseEntity<List<Cliente>> listarClientes() {
-        try {
-            List<Cliente> clientes = ClienteDTO.lerClientesDoArquivo();
-            return ResponseEntity.ok(clientes);
-        } catch (IOException | URISyntaxException e) {
-            e.printStackTrace();
-            return ResponseEntity.status(500).body(null);
         }
     }
 }

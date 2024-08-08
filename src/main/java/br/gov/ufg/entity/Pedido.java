@@ -1,7 +1,5 @@
 package br.gov.ufg.entity;
 
-import br.gov.ufg.entity.Data;
-import br.gov.ufg.entity.Item;
 import br.gov.ufg.utils.FileUtils;
 
 import java.io.IOException;
